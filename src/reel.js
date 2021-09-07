@@ -57,6 +57,7 @@ export default class Reel extends PIXI.Container {
 
        
 
+
     }
     spin() {
         console.log("spin")

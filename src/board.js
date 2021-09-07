@@ -7,7 +7,7 @@ export default class Board extends PIXI.Container {
     constructor() {
         super()
         this.x = 180
-        this.y = 100
+        this.y = 65
     }
     renderReels(reelIcons) {
         reelIcons.forEach((reelIcon, i) => {
