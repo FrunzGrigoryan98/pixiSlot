@@ -70,12 +70,17 @@ export default class Reel extends PIXI.Container {
         return Math.floor(Math.random() * 9) + 1
     }
     _rotateIcons() {
+
+        
+       
+
        
         this.dudesCord.forEach(dude=>{
             if(dude.y-200 > 720  ){
             dude.texture = PIXI.Texture.from(`img/${this._getNextIcon()}.png`)
             }
         })
+
     }
     _stopSpin() {
         console.log("stop em linum ushacumov")

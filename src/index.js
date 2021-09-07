@@ -2,24 +2,22 @@ import * as PIXI from 'pixi.js'
 import gsap from 'gsap'
 import MyTicker from './core'
 import Board from './board'
+import BetBar from './betbar'
 import { drawSlotLines, addSpinMask, StopSpinBtnCreator } from './graphic'
 import {shuffle} from './helpers'
 
 const renderer = new PIXI.Renderer({
     width: 1280,
-    height: 720,
+    height: 900,
 })
 
 renderer.backgroundColor = 0x03FFBA;
 
-function resize() {
 
+function resize() {
     if (renderer.view.width === 1280) {
         renderer.view.style.width = window.innerWidth + 'px';
-
     }
-
-
 }
 window.onresize = resize;
 document.body.appendChild(renderer.view);
@@ -32,6 +30,33 @@ const mainStage = new PIXI.Container()
 const stage = new PIXI.Container()
 mainStage.addChild(stage)
 let board = new Board();
+
+
+stage.addChild(board)
+
+
+const graphicBetBar = new PIXI.Graphics()
+// graphics.drawEllipse(200, 850, 80, 50);
+const betbar = new BetBar()
+
+betbar.createdBetBar(graphicBetBar, mainStage, 200, 830, 80, 50, "BALANCE", 140, 800)
+betbar.createdBetBar(graphicBetBar, mainStage, 400, 830, 50, 30, "MIN", 375, 800)
+betbar.createdBetBar(graphicBetBar, mainStage, 900, 830, 50, 30, "MAX", 870, 800)
+betbar.createdBetBar(graphicBetBar, mainStage, 1044, 830, 80, 50, "WIN", 1025, 800)
+
+
+betbar.createdBetBar(graphicBetBar, mainStage, 550, 830, 50, 30, "-", 530, 800)
+betbar.createdBetBar(graphicBetBar, mainStage, 750, 830, 50, 30, "+", 750, 800)
+
+betbar.createdBetBar(graphicBetBar, mainStage, 650, 830, 90, 40, "BET", 620, 800)
+
+
+
+
+stage.addChild(betbar)
+
+addSpinMask(stage, 100, 90, 1100, 600)
+
 console.log(board);
 
 
