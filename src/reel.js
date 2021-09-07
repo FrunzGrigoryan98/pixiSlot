@@ -31,10 +31,10 @@ export default class Reel extends PIXI.Container {
         this.y += deltaY;
 
         if (this.y > 76) {
-            this.y = -76
+            this.y = -106
             this._rotateIcons()
         } else if (this.y < 0) {
-            deltaY = 0
+            deltaY = 1
         }
     }
     spin() {

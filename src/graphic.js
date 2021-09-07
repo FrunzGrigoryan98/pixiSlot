@@ -1,32 +1,25 @@
+import { _ticker } from 'gsap/gsap-core';
 import * as PIXI from 'pixi.js'
-
+const ticker = new PIXI.Ticker()
 
 const mask = new PIXI.Graphics()
 
-
 export function drawSlotLines(stage, mainStage) {
-    mask.lineStyle(1, 0x00A964, 1);
-    mask.drawRect(340, 40, 0, 1500);
+    mask.lineStyle(3, 0xff0000, 1);
+    mask.drawRect(340, 60, 0, 1200);
     mask.endFill();
 
-    mask.lineStyle(1, 0x00A964, 1);
-    mask.drawRect(130, 40, 0, 1500);
+
+    mask.lineStyle(3, 0xff0000, 1);
+    mask.drawRect(535, 60, 0, 1200);
     mask.endFill();
 
-    mask.lineStyle(1, 0x00A964, 1);
-    mask.drawRect(535, 40, 0, 1500);
+    mask.lineStyle(3, 0xff0000, 1);
+    mask.drawRect(730, 60, 0, 1200);
     mask.endFill();
 
-    mask.lineStyle(1, 0x00A964, 1);
-    mask.drawRect(730, 40, 0, 1500);
-    mask.endFill();
-
-    mask.lineStyle(1, 0x00A964, 1);
-    mask.drawRect(935, 40, 0, 1500);
-    mask.endFill();
-
-    mask.lineStyle(1, 0x00A964, 1);
-    mask.drawRect(1130, 40, 0, 1500);
+    mask.lineStyle(3, 0xff0000, 1);
+    mask.drawRect(935, 60, 0, 1200);
     mask.endFill();
 
 
@@ -48,14 +41,29 @@ export function drawSlotLines(stage, mainStage) {
         wordWrapWidth: 440,
         lineJoin: 'round',
     });
-
     const refn = new PIXI.Text('FIRST SLOT', style)
     refn.x = 1280 / 2 - 110
     refn.y = 10
-    mainStage.addChild(refn)
+    
+    
+    mainStage.addChild(refn);
+
+    refn.interactive = true
+    refn.buttonMode = true
+
+    refn.on('pointerdown', a);
+
+    function a() {
+        ticker.add(()=> {
+            if(refn.rotation <= 6.2) {refn.rotation += 0.1;}
+           else { return 0;}
+        })
+        ticker.start()
+
+
+    }     
 
 }
-
 
 export function addSpinMask(iconsParent, x, y, width, height) {
     const mask = new PIXI.Graphics();
@@ -66,9 +74,9 @@ export function addSpinMask(iconsParent, x, y, width, height) {
 }
 
 
-
 export function StopSpinBtnCreator(renderer, mainStage, spin, graphics1) {
-
+    const ramka = PIXI.Sprite.from('img/Nare.png')
+    mainStage.addChild(ramka)
 
     spin.width = 150
     spin.height = 150
