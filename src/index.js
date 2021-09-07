@@ -36,7 +36,7 @@ board.renderReels([[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 5, 6, 7, 8, 9, 
 stage.addChild(board)
 
 
-addSpinMask(stage, 100, 210, 1100, 480)
+addSpinMask(stage, 50, 60, 1200, 600)
 
 // function updateY () {
 //     let x ;
@@ -91,10 +91,10 @@ function handleSpinButtonClick() {
 }
 
 const ticker = new PIXI.Ticker()
-console.log(mainStage);
 spin.on('pointerdown', handleSpinButtonClick)
 graphics1.on('pointerdown', handleSpinButtonClick)
 ticker.start()
+
 
 ticker.add(loop1)
 function loop1() {
