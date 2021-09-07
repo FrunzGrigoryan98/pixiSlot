@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js'
 import Signal from './signal'
 import MyTicker from './core'
+import {shuffle} from './helpers'
 
 let ticker1 = new MyTicker
 
@@ -12,6 +13,8 @@ export default class Reel extends PIXI.Container {
         this.y = y;
         this.dudesCord = []
 
+        console.log(icons);
+
         this.speed = 1;
         this.onBoardSpinEndSignal = new Signal()
         this._renderInitialState()
@@ -20,22 +23,41 @@ export default class Reel extends PIXI.Container {
         this.icons.forEach((icon, idx) => {
             let icon1 = new PIXI.Sprite.from(`img/${icon}.png`)
             icon1.texture = PIXI.Texture.from(`img/${this._getNextIcon()}.png`)
+            // console.log(icon1.texture);
             this.addChild(icon1)
+            // console.log(this.children);
             icon1.y = idx * 162
-
+            // console.log(this);
             this.dudesCord.push(icon1)
         })
     }
     spining() {
-        let deltaY = this.speed;
-        this.y += deltaY;
+        this.dudesCord.forEach(dude=>{
+            console.log(dude);
+                    let deltaY = 1;
+                 if(dude.y-210 > 720  ){
+                   this._rotateIcons()
+                         dude.y = -76
+                        }else if (dude.y < 0) {
+                            deltaY = 4  
+                        }     
+                         dude.y += deltaY
+                        }) 
+                
+        //         let deltaY = this.speed;
+        //         this.y += deltaY;
+        //         0
+        //         if (this.y > 76) {
+        //             this.y = -106
+        //              this._rotateIcons()
 
-        if (this.y > 76) {
-            this.y = -76
-            this._rotateIcons()
-        } else if (this.y < 0) {
-            deltaY = 0
-        }
+        // } else if (this.y < 0) {
+        //     deltaY = 1
+        // }
+
+       
+
+
     }
     spin() {
         console.log("spin")
@@ -48,35 +70,27 @@ export default class Reel extends PIXI.Container {
         return Math.floor(Math.random() * 9) + 1
     }
     _rotateIcons() {
+
         
-        let x;
-        for (let i = 0; i < this.dudesCord.length; i++) {
-            console.log("this.dudesCord", this.dudesCord[i].y)
-            x = this.dudesCord[i].y
-            this.dudesCord[i].x = 180
-            //  dudesCord[i].anchor.set(0.5, 0.5); 
-            let deltaY = 2;
-            console.log(deltaY);
-            if (this.dudesCord[i].y - 850 > 1280) {
-                this.dudesCord[i].y = -100
-                this.dudesCord[i].x = 200
+       
 
-            } else if (this.dudesCord[i].y < 0) {
-                deltaY = 3
+       
+        this.dudesCord.forEach(dude=>{
+            if(dude.y-200 > 720  ){
+            dude.texture = PIXI.Texture.from(`img/${this._getNextIcon()}.png`)
             }
-            //  dudesCord[i].y += 0
-            this.dudesCord[i].y += 2
-            // console.log(dudesCord[i].y, 'y');
-
-        }
+        })
 
     }
     _stopSpin() {
         console.log("stop em linum ushacumov")
         ticker1.remove(this.spining, this)
         this.y = 0
+        
     }
 
 }
 
 ticker1.start()
+
+
