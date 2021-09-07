@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import MyTicker from './core'
 import Board from './board'
 import { drawSlotLines, addSpinMask, StopSpinBtnCreator } from './graphic'
+import {shuffle} from './helpers'
 
 const renderer = new PIXI.Renderer({
     width: 1280,
@@ -31,12 +32,17 @@ const mainStage = new PIXI.Container()
 const stage = new PIXI.Container()
 mainStage.addChild(stage)
 let board = new Board();
+console.log(board);
 
-board.renderReels([[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]])
+
+board.renderReels([[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]])
 stage.addChild(board)
 
 
-addSpinMask(stage, 50, 60, 1200, 600)
+
+ addSpinMask(stage, 100, 210, 1100,480)
+
+
 
 // function updateY () {
 //     let x ;
