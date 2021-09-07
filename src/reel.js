@@ -49,6 +49,26 @@ export default class Reel extends PIXI.Container {
     }
     _rotateIcons() {
         
+        let x;
+        for (let i = 0; i < this.dudesCord.length; i++) {
+            console.log("this.dudesCord", this.dudesCord[i].y)
+            x = this.dudesCord[i].y
+            this.dudesCord[i].x = 180
+            //  dudesCord[i].anchor.set(0.5, 0.5); 
+            let deltaY = 2;
+            console.log(deltaY);
+            if (this.dudesCord[i].y - 850 > 1280) {
+                this.dudesCord[i].y = -100
+                this.dudesCord[i].x = 200
+
+            } else if (this.dudesCord[i].y < 0) {
+                deltaY = 3
+            }
+            //  dudesCord[i].y += 0
+            this.dudesCord[i].y += 2
+            // console.log(dudesCord[i].y, 'y');
+
+        }
 
     }
     _stopSpin() {
