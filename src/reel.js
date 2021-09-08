@@ -1,23 +1,20 @@
 import * as PIXI from 'pixi.js'
 import Signal from './signal'
 import MyTicker from './core'
-import {shuffle} from './helpers'
+import { shuffle } from './helpers'
 
 let ticker1 = new MyTicker
 
 export default class Reel extends PIXI.Container {
     constructor(icons, x, y, dudesCord) {
         super()
-        this.icons = icons
+        this.icons = icons;
         this.x = x;
         this.y = y;
-        this.dudesCord = []
-
-        console.log(icons);
-
+        this.dudesCord = [];
         this.speed = 1;
-        this.onBoardSpinEndSignal = new Signal()
-        this._renderInitialState()
+        this.onBoardSpinEndSignal = new Signal();
+        this._renderInitialState();
     }
     _renderInitialState() {
         this.icons.forEach((icon, idx) => {
@@ -32,18 +29,18 @@ export default class Reel extends PIXI.Container {
         })
     }
     spining() {
-        this.dudesCord.forEach(dude=>{
-            console.log(dude);
-                    let deltaY = 1;
-                 if(dude.y-210 > 720  ){
-                   this._rotateIcons()
-                         dude.y = -76
-                        }else if (dude.y < 0) {
-                            deltaY = 4  
-                        }     
-                         dude.y += deltaY
-                        }) 
-                
+        this.dudesCord.forEach(dude => {
+            // console.log(dude);
+            let deltaY = 1;
+            if (dude.y - 210 > 720) {
+                this._rotateIcons()
+                dude.y = -76
+            } else if (dude.y < 0) {
+                deltaY = 4
+            }
+            dude.y += deltaY
+        })
+
         //         let deltaY = this.speed;
         //         this.y += deltaY;
         //         0
@@ -54,10 +51,6 @@ export default class Reel extends PIXI.Container {
         // } else if (this.y < 0) {
         //     deltaY = 1
         // }
-
-       
-
-
     }
     spin() {
         console.log("spin")
@@ -70,27 +63,19 @@ export default class Reel extends PIXI.Container {
         return Math.floor(Math.random() * 9) + 1
     }
     _rotateIcons() {
-
-        
-       
-
-       
-        this.dudesCord.forEach(dude=>{
-            if(dude.y-200 > 720  ){
-            dude.texture = PIXI.Texture.from(`img/${this._getNextIcon()}.png`)
+        this.dudesCord.forEach(dude => {
+            if (dude.y - 200 > 720) {
+                dude.texture = PIXI.Texture.from(`img/${this._getNextIcon()}.png`)
             }
         })
-
     }
     _stopSpin() {
         console.log("stop em linum ushacumov")
         ticker1.remove(this.spining, this)
         this.y = 0
-        
+
     }
-
 }
-
-ticker1.start()
+ticker1.start();
 
 

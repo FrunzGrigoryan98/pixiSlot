@@ -11,7 +11,7 @@ const renderer = new PIXI.Renderer({
     height: 900,
 })
 
-renderer.backgroundColor = 0x03FFBA;
+renderer.backgroundColor = 0x3652a6;
 
 
 function resize() {
@@ -49,24 +49,11 @@ betbar.createdBetBar(graphicBetBar, mainStage, 550, 830, 50, 30, "-", 530, 800)
 betbar.createdBetBar(graphicBetBar, mainStage, 750, 830, 50, 30, "+", 750, 800)
 
 betbar.createdBetBar(graphicBetBar, mainStage, 650, 830, 90, 40, "BET", 620, 800)
-
-
-
-
 stage.addChild(betbar)
 
 addSpinMask(stage, 100, 90, 1100, 600)
-
-console.log(board);
-
-
 board.renderReels([[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]])
 stage.addChild(board)
-
-
-
- addSpinMask(stage, 100, 210, 1100,480)
-
 
 
 // function updateY () {
