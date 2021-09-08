@@ -6,20 +6,19 @@ const mask = new PIXI.Graphics()
 
 export function drawSlotLines(stage, mainStage) {
     mask.lineStyle(3, 0xff0000, 1);
-    mask.drawRect(340, 60, 0, 1200);
-    mask.endFill();
-
-
-    mask.lineStyle(3, 0xff0000, 1);
-    mask.drawRect(535, 60, 0, 1200);
+    mask.drawRect(340,0, 0, 2000);
     mask.endFill();
 
     mask.lineStyle(3, 0xff0000, 1);
-    mask.drawRect(730, 60, 0, 1200);
+    mask.drawRect(535, 0, 0, 2000);
     mask.endFill();
 
     mask.lineStyle(3, 0xff0000, 1);
-    mask.drawRect(935, 60, 0, 1200);
+    mask.drawRect(730, 0, 0, 2000);
+    mask.endFill();
+
+    mask.lineStyle(3, 0xff0000, 1);
+    mask.drawRect(935, 0, 0, 2000);
     mask.endFill();
 
 
@@ -44,30 +43,29 @@ export function drawSlotLines(stage, mainStage) {
     const refn = new PIXI.Text('FIRST SLOT', style)
     refn.x = 1280 / 2 - 110
     refn.y = 10
-    
-    
+
+
     mainStage.addChild(refn);
 
     refn.interactive = true
     refn.buttonMode = true
 
-    refn.on('pointerdown', a);
+    refn.on('pointerdown', rotationText);
 
-    function a() {
-        ticker.add(()=> {
-            if(refn.rotation <= 6.2) {refn.rotation += 0.1;}
-           else { return 0;}
+    function rotationText() {
+        ticker.add(() => {
+            if (refn.rotation <= 6.2) {
+                refn.rotation += 0.1;
+            }
+            else { return 0; }
         })
         ticker.start()
-
-
-    }     
-
+    }
 }
 
 export function addSpinMask(iconsParent, x, y, width, height) {
     const mask = new PIXI.Graphics();
-    mask.beginFill(0x00ffff);
+    mask.beginFill(0x03FFBA);
     mask.drawRect(x, y, width, height);
     iconsParent.addChild(mask);
     iconsParent.mask = mask;
@@ -75,9 +73,9 @@ export function addSpinMask(iconsParent, x, y, width, height) {
 
 
 export function StopSpinBtnCreator(renderer, mainStage, spin, graphics1) {
-    const ramka = PIXI.Sprite.from('img/Nare.png')
-    mainStage.addChild(ramka)
-
+    const border = PIXI.Sprite.from('img/border.png')
+    border.y = 4
+    mainStage.addChild(border)
     spin.width = 150
     spin.height = 150
     spin.x = renderer.view.width - 155
@@ -105,20 +103,18 @@ export function StopSpinBtnCreator(renderer, mainStage, spin, graphics1) {
         lineJoin: 'round',
     });
 
-    let text = 'Stop'
-
+    let text = 'Stop';
     graphics1.lineStyle(5, 0xFF0000);
-    graphics1.beginFill(0xFC471F)
+    graphics1.beginFill(0xFC471F);
     graphics1.drawCircle(100, 250, 72);
-    graphics1.x = renderer.view.width - 180
-    graphics1.y = 390
-    graphics1.interactive = true
-    graphics1.buttonMode = true
-    graphics1.visible = false
-    mainStage.addChild(graphics1)
+    graphics1.x = renderer.view.width - 180;
+    graphics1.y = 570;
+    graphics1.interactive = true;
+    graphics1.buttonMode = true;
+    graphics1.visible = false;
+    mainStage.addChild(graphics1);
     const basicText = new PIXI.Text(`${text}`, stopStyle);
-    basicText.x = 57
-    basicText.y = 223
-    graphics1.addChild(basicText)
-
+    basicText.x = 57;
+    basicText.y = 223;
+    graphics1.addChild(basicText);
 }
