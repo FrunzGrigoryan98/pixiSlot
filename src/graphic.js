@@ -6,19 +6,19 @@ const mask = new PIXI.Graphics()
 
 export function drawSlotLines(stage, mainStage) {
     mask.lineStyle(3, 0xff0000, 1);
-    mask.drawRect(340, 90, 0, 1200);
+    mask.drawRect(340,0, 0, 2000);
     mask.endFill();
 
     mask.lineStyle(3, 0xff0000, 1);
-    mask.drawRect(535, 90, 0, 1200);
+    mask.drawRect(535, 0, 0, 2000);
     mask.endFill();
 
     mask.lineStyle(3, 0xff0000, 1);
-    mask.drawRect(730, 90, 0, 1200);
+    mask.drawRect(730, 0, 0, 2000);
     mask.endFill();
 
     mask.lineStyle(3, 0xff0000, 1);
-    mask.drawRect(935, 90, 0, 1200);
+    mask.drawRect(935, 0, 0, 2000);
     mask.endFill();
 
 
@@ -74,7 +74,7 @@ export function addSpinMask(iconsParent, x, y, width, height) {
 
 export function StopSpinBtnCreator(renderer, mainStage, spin, graphics1) {
     const border = PIXI.Sprite.from('img/border.png')
-    border.y = 30
+    border.y = 4
     mainStage.addChild(border)
     spin.width = 150
     spin.height = 150
