@@ -47,28 +47,7 @@ export default class Board extends PIXI.Container {
                 dude.y = idx * 162  
             })
         })
-        //     // reel.icons.forEach(iconNumber => {
-        //     //     console.log(iconNumber);
-
-        //     // });
-
-        //     console.log(reel.children[1].y, 'children.y');
-
-
-        //         console.log(reel.icons[1], 'icons');
-
-        //         if (reel.children[1].y==200) {
-        //             console.log('fjhfd');
-        //         }
-
-
-
-
-        //     })
-
-        // ticker.remove(startSpin)
-
-
+       
     }
 
 }

@@ -13,7 +13,7 @@ export default class Reel extends PIXI.Container {
         this.x = x;
         this.y = y;
         this.dudesCord = [];
-        this.speed = 1;
+        this.speed = 5;
         this.onBoardSpinEndSignal = new Signal();
         this._renderInitialState();
     }
@@ -75,7 +75,7 @@ export default class Reel extends PIXI.Container {
             gsap.from(dude, { duration: 2.5, ease: "elastic.out(1, 0.3)", y: -500 });
         })
         ticker1.remove(this.spining, this)
-        this.y = 0
+        // this.y = 0
     }
 }
 ticker1.start();
