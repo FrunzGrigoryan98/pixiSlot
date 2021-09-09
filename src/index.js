@@ -32,7 +32,8 @@ mainStage.addChild(stage)
 let board = new Board();
 stage.addChild(board)
 const betbar = new BetBar(800)
-betbar.betIncrement(610, 830)
+// betbar.betIncrement(610, 830)
+
 mainStage.addChild(betbar)
 
 addSpinMask(stage, 100, 65, 1100, 600)
