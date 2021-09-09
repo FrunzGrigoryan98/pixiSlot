@@ -18,11 +18,12 @@ export default class Board extends PIXI.Container {
             this.addChild(ReelContainer)
         })
     }
-
+ 
     startSpin() {
         this.children.forEach(reel => {
                reel.spin()
         })
+        console.log('s');
     }
 
     stopSpin() {
