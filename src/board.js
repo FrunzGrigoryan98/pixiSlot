@@ -2,9 +2,7 @@ import * as PIXI from 'pixi.js'
 import Reel from './reel' 
 import gsap from 'gsap'
 
-
 const REEL_WIDTH = 200
-
 export default class Board extends PIXI.Container {
     constructor() {
         super()
