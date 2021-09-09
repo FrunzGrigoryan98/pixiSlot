@@ -6,7 +6,7 @@ const mask = new PIXI.Graphics()
 
 export function drawSlotLines(stage, mainStage) {
     mask.lineStyle(3, 0xff0000, 1);
-    mask.drawRect(340,0, 0, 2000);
+    mask.drawRect(340, 0, 0, 2000);
     mask.endFill();
 
     mask.lineStyle(3, 0xff0000, 1);
@@ -51,16 +51,18 @@ export function drawSlotLines(stage, mainStage) {
     refn.buttonMode = true
 
     refn.on('pointerdown', rotationText);
-
     function rotationText() {
-        ticker.add(() => {
+        console.log(4)
+        // ticker.add(() => {
             if (refn.rotation <= 6.2) {
                 refn.rotation += 0.1;
             }
             else { return 0; }
-        })
-        ticker.start()
+        // })
+        // ticker.start()
+        requestAnimationFrame(rotationText)
     }
+    
 }
 
 export function addSpinMask(iconsParent, x, y, width, height) {
