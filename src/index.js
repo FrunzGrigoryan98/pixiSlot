@@ -4,7 +4,7 @@ import MyTicker from './core'
 import Board from './board'
 import BetBar from './betbar'
 import { drawSlotLines, addSpinMask, StopSpinBtnCreator } from './graphic'
-import {shuffle} from './helpers'
+import { shuffle } from './helpers'
 
 const renderer = new PIXI.Renderer({
     width: 1280,
@@ -30,26 +30,13 @@ const mainStage = new PIXI.Container()
 const stage = new PIXI.Container()
 mainStage.addChild(stage)
 let board = new Board();
-
-
 stage.addChild(board)
 
 
-const graphicBetBar = new PIXI.Graphics()
-// graphics.drawEllipse(200, 850, 80, 50);
-const betbar = new BetBar()
+const betbar = new BetBar(800)
+betbar.betIncrement(610, 830)
+mainStage.addChild(betbar)
 
-betbar.createdBetBar(graphicBetBar, mainStage, 200, 830, 80, 50, "BALANCE", 140, 800)
-betbar.createdBetBar(graphicBetBar, mainStage, 400, 830, 50, 30, "MIN", 375, 814)
-betbar.createdBetBar(graphicBetBar, mainStage, 900, 830, 50, 30, "MAX", 870, 814)
-betbar.createdBetBar(graphicBetBar, mainStage, 1044, 830, 80, 50, "WIN", 1015, 800)
-
-
-betbar.createdBetBar(graphicBetBar, mainStage, 550, 830, 50, 30, "-", 530, 813)
-betbar.createdBetBar(graphicBetBar, mainStage, 750, 830, 50, 30, "+", 750, 814)
-
-betbar.createdBetBar(graphicBetBar, mainStage, 650, 830, 90, 40, "BET", 620, 800)
-stage.addChild(betbar)
 
 addSpinMask(stage, 100, 172, 1100, 500)
 board.renderReels([[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]])
