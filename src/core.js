@@ -9,7 +9,7 @@ export default class MyTicker extends PIXI.Ticker {
         let t = +new Date()
 
         let onPassed = () => {
-            let passed = +new Date() - t
+            let passed = +new Date() -t
 
             if (passed >= delay) {
                 handler()
