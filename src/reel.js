@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js'
 import gsap from 'gsap'
 import Signal from './signal'
-import MyTicker from './myTicker'
+import MyTicker from './core/myTicker'
 import { shuffle } from './helpers'
 
 let ticker1 = new MyTicker
