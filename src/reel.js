@@ -1,19 +1,20 @@
 import * as PIXI from 'pixi.js'
+import gsap from 'gsap'
 import Signal from './signal'
-import MyTicker from './core'
+import MyTicker from './core/myTicker'
 import { shuffle } from './helpers'
 import gsap from 'gsap'
 
 let ticker1 = new MyTicker
 
 export default class Reel extends PIXI.Container {
-    constructor(icons, x, y, dudesCord) {
+    constructor(icons, x, y) {
         super()
         this.icons = icons;
         this.x = x;
         this.y = y;
         this.dudesCord = [];
-        this.speed = 1;
+        this.speed = 5;
         this.onBoardSpinEndSignal = new Signal();
         this._renderInitialState();
     }
@@ -21,11 +22,8 @@ export default class Reel extends PIXI.Container {
         this.icons.forEach((icon, idx) => {
             let icon1 = new PIXI.Sprite.from(`img/${icon}.png`)
             icon1.texture = PIXI.Texture.from(`img/${this._getNextIcon()}.png`)
-            // console.log(icon1.texture);
             this.addChild(icon1)
-            // console.log(this.children);
             icon1.y = idx * 162
-            // console.log(this);
             this.dudesCord.push(icon1)
         })
     }
@@ -35,10 +33,12 @@ export default class Reel extends PIXI.Container {
             let deltaY = 5;
             if (dude.y - 210 > 720) {
                 this._rotateIcons()
+                // gsap.from(dude, { duration: 2.5, ease: "elastic.out(1, 0.3)", y: -500 })
                 dude.y = -76
             } else if (dude.y < 0) {
-                deltaY = 4
+                deltaY = 7
             }
+            
             dude.y += deltaY
         })
 
@@ -71,8 +71,13 @@ export default class Reel extends PIXI.Container {
         })
     }
     _stopSpin() {
-        console.log("stop em linum ushacumov")
+        // console.log("stop em linum ushacumov")
+        this.dudesCord.forEach((dude,idx)=>{
+            dude.y = idx * 162  
+            gsap.from(dude, { duration: 2.5, ease: "elastic.out(1, 0.3)", y: -500 });
+        })
         ticker1.remove(this.spining, this)
+        // this.y = 0
         this.y = 0
         this.dudesCord.forEach((dude, idx) => {
             dude.y = idx * 162

@@ -1,6 +1,5 @@
 import * as PIXI from 'pixi.js'
-import gsap from 'gsap'
-import MyTicker from './core'
+import MyTicker from './core/myTicker'
 import Board from './board'
 import BetBar from './betbar'
 import { drawSlotLines, addSpinMask, StopSpinBtnCreator } from './graphic'
@@ -31,9 +30,12 @@ const stage = new PIXI.Container()
 mainStage.addChild(stage)
 let board = new Board();
 stage.addChild(board)
+
+
 const betbar = new BetBar(800)
 betbar.betIncrement(610, 830)
 mainStage.addChild(betbar)
+
 
 addSpinMask(stage, 100, 172, 1100, 500)
 board.renderReels([[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]])

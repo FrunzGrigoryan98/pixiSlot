@@ -1,8 +1,8 @@
 import * as PIXI from 'pixi.js'
 import Reel from './reel' 
+import gsap from 'gsap'
 
 const REEL_WIDTH = 200
-
 export default class Board extends PIXI.Container {
     constructor() {
         super()
@@ -18,11 +18,12 @@ export default class Board extends PIXI.Container {
             this.addChild(ReelContainer)
         })
     }
-
+ 
     startSpin() {
         this.children.forEach(reel => {
                reel.spin()
         })
+        console.log('s');
     }
 
     stopSpin() {
@@ -40,36 +41,12 @@ export default class Board extends PIXI.Container {
                 })
             })
 
-        // this.children.forEach(reel =>{
-        //     // reel.dudesCord.forEach((dude, idx)=>{
-        //     //     // dude.y = idx *160
-
-        //     //     // gsap.from(dude, { duration: 2.5, ease: "elastic.out(1, 0.3)", y: 0});
-
-
-        //     // })
-        //     // reel.icons.forEach(iconNumber => {
-        //     //     console.log(iconNumber);
-
-        //     // });
-
-        //     console.log(reel.children[1].y, 'children.y');
-
-
-        //         console.log(reel.icons[1], 'icons');
-
-        //         if (reel.children[1].y==200) {
-        //             console.log('fjhfd');
-        //         }
-
-
-
-
-        //     })
-
-        // ticker.remove(startSpin)
-
-
+        this.children.forEach(reel =>{
+            reel.dudesCord.forEach((dude,idx)=>{
+                dude.y = idx * 162  
+            })
+        })
+       
     }
 
 }
