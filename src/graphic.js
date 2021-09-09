@@ -76,7 +76,8 @@ export function addSpinMask(iconsParent, x, y, width, height) {
 
 export function StopSpinBtnCreator(renderer, mainStage, spin, graphics1) {
     const border = PIXI.Sprite.from('img/border.png')
-    border.y = 4
+    border.y = 120
+    border.height= 600
     mainStage.addChild(border)
     spin.width = 150
     spin.height = 150
