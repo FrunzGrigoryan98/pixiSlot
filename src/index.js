@@ -1,6 +1,5 @@
 import * as PIXI from 'pixi.js'
-import gsap from 'gsap'
-import MyTicker from './core'
+import MyTicker from './core/myTicker'
 import Board from './board'
 import BetBar from './betbar'
 import { drawSlotLines, addSpinMask, StopSpinBtnCreator } from './graphic'
