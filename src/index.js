@@ -1,6 +1,5 @@
 import * as PIXI from 'pixi.js'
-import gsap from 'gsap'
-import MyTicker from './core'
+import MyTicker from './core/myTicker'
 import Board from './board'
 import BetBar from './betbar'
 import { drawSlotLines, addSpinMask, StopSpinBtnCreator } from './graphic'
@@ -36,6 +35,7 @@ stage.addChild(board)
 
 
 const graphicBetBar = new PIXI.Graphics()
+
 // graphics.drawEllipse(200, 850, 80, 50);
 const betbar = new BetBar()
 
@@ -45,7 +45,7 @@ betbar.createdBetBar(graphicBetBar, mainStage, 900, 830, 50, 30, "MAX", 870, 800
 betbar.createdBetBar(graphicBetBar, mainStage, 1044, 830, 80, 50, "WIN", 1025, 800)
 
 
-betbar.createdBetBar(graphicBetBar, mainStage, 550, 830, 50, 30, "-", 530, 800)
+betbar.minBar( mainStage,530, 800)
 betbar.createdBetBar(graphicBetBar, mainStage, 750, 830, 50, 30, "+", 750, 800)
 
 betbar.createdBetBar(graphicBetBar, mainStage, 650, 830, 90, 40, "BET", 620, 800)
