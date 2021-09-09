@@ -3,7 +3,6 @@ import gsap from 'gsap'
 import Signal from './signal'
 import MyTicker from './core/myTicker'
 import { shuffle } from './helpers'
-import gsap from 'gsap'
 
 let ticker1 = new MyTicker
 
