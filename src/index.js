@@ -33,7 +33,8 @@ stage.addChild(board)
 
 
 const betbar = new BetBar(800)
-betbar.betIncrement(610, 830)
+// betbar.betIncrement(610, 830)
+
 mainStage.addChild(betbar)
 
 
