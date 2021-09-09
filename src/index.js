@@ -40,18 +40,18 @@ const graphicBetBar = new PIXI.Graphics()
 const betbar = new BetBar()
 
 betbar.createdBetBar(graphicBetBar, mainStage, 200, 830, 80, 50, "BALANCE", 140, 800)
-betbar.createdBetBar(graphicBetBar, mainStage, 400, 830, 50, 30, "MIN", 375, 800)
-betbar.createdBetBar(graphicBetBar, mainStage, 900, 830, 50, 30, "MAX", 870, 800)
-betbar.createdBetBar(graphicBetBar, mainStage, 1044, 830, 80, 50, "WIN", 1025, 800)
+betbar.createdBetBar(graphicBetBar, mainStage, 400, 830, 50, 30, "MIN", 375, 814)
+betbar.createdBetBar(graphicBetBar, mainStage, 900, 830, 50, 30, "MAX", 870, 814)
+betbar.createdBetBar(graphicBetBar, mainStage, 1044, 830, 80, 50, "WIN", 1015, 800)
 
 
-betbar.createdBetBar(graphicBetBar, mainStage, 550, 830, 50, 30, "-", 530, 800)
-betbar.createdBetBar(graphicBetBar, mainStage, 750, 830, 50, 30, "+", 750, 800)
+betbar.createdBetBar(graphicBetBar, mainStage, 550, 830, 50, 30, "-", 530, 813)
+betbar.createdBetBar(graphicBetBar, mainStage, 750, 830, 50, 30, "+", 750, 814)
 
 betbar.createdBetBar(graphicBetBar, mainStage, 650, 830, 90, 40, "BET", 620, 800)
 stage.addChild(betbar)
 
-addSpinMask(stage, 100, 65, 1100, 600)
+addSpinMask(stage, 100, 172, 1100, 500)
 board.renderReels([[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]])
 stage.addChild(board)
 
