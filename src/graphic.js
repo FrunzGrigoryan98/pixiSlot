@@ -52,17 +52,15 @@ export function drawSlotLines(stage, mainStage) {
 
     refn.on('pointerdown', rotationText);
     function rotationText() {
-        console.log(4)
-        // ticker.add(() => {
-            if (refn.rotation <= 6.2) {
-                refn.rotation += 0.1;
-            }
-            else { return 0; }
-        // })
-        // ticker.start()
+        if (refn.rotation <= 6.2) {
+            refn.rotation += 0.1;
+        }
+        else {
+            refn.rotation = 0;
+            return 0;
+        }
         requestAnimationFrame(rotationText)
     }
-    
 }
 
 export function addSpinMask(iconsParent, x, y, width, height) {
@@ -77,7 +75,7 @@ export function addSpinMask(iconsParent, x, y, width, height) {
 export function StopSpinBtnCreator(renderer, mainStage, spin, graphics1) {
     const border = PIXI.Sprite.from('img/border.png')
     border.y = 120
-    border.height= 600
+    border.height = 600
     mainStage.addChild(border)
     spin.width = 150
     spin.height = 150
