@@ -23,7 +23,7 @@ export default class Board extends PIXI.Container {
         this.children.forEach(reel => {
                reel.spin()
         })
-        console.log('s');
+
     }
 
     stopSpin() {

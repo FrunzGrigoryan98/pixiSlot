@@ -31,9 +31,6 @@ mainStage.addChild(stage)
 let board = new Board();
 stage.addChild(board)
 
-
-
-
 addSpinMask(stage, 100, 172, 1100, 500)
 board.renderReels([[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]])
 stage.addChild(board)
@@ -64,18 +61,20 @@ drawSlotLines(stage, mainStage)
 
 const spin = new PIXI.Sprite.from('img/spin.png')
 const graphics1 = new PIXI.Graphics();
+const betbar = new BetBar(800)
+mainStage.addChild(betbar)
+
 StopSpinBtnCreator(renderer, mainStage, spin, graphics1)
 const betbar = new BetBar(800, spin)
 
 mainStage.addChild(betbar)
 
-function startSpin() {
-    console.log("start spin")
-    board.startSpin()
-    spin.visible = false
-    graphics1.visible = true
+ function startSpin() {
+        board.startSpin()
+        spin.visible = false
+        graphics1.visible = true
+        betbar.balancevalue()
 }
-
 
 function stopSpin() {
     spin.visible = true
@@ -90,7 +89,6 @@ function handleSpinButtonClick() {
         : stopSpin()
     spin.visible = !spinning
     graphics1.visible = spinning
-
 }
 
 const ticker = new PIXI.Ticker()

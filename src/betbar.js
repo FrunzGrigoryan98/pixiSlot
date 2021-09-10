@@ -8,19 +8,33 @@ export default class BetBar extends PIXI.Container {
         this.bet = [10, 20, 30, 40, 50, 100, 200, 300, 400, 500, 1000, 10000, 20000];
         this.count = 10;
         this.idx = 0;
+        this.price = 10000;
         this.addChild(graphicBetBar);
-        this.createdBetBar(graphicBetBar, 200, 0, 80, 50, "BALANCE", 140, -10);
+        this.createdBetBar(graphicBetBar, 200, 0, 80, 50, "BALANCE", 140, -5);
+        this.createBalanceAmountField();
         this.createdBetBar(graphicBetBar, 1044, 0, 80, 50, "WIN", 1020, -10);
-        this.minButton = this.createButton(550, 0, 50, 30, "-", 530, -15);
+        this.minButton = this.createButton(550, 0, 50, 30, "-", 545, -15);
         this.maxButton = this.createButton(750, 0, 50, 30, "+", 745, -15);
-        this.MaxButton = this.createButton(900, 0, 50, 30, "Max", 870, -10);
-        this.MinButton = this.createButton(400, 0, 50, 30, "MIN", 375, -10);
+        this.MaxButton = this.createButton(900, 0, 50, 30, "Max", 875, -15);
+        this.MinButton = this.createButton(400, 0, 50, 30, "MIN", 375, -15);
         this.addChild(this.minButton);
         this.addChild(this.maxButton);
-        this.createdBetBar(graphicBetBar, 650, 0, 90, 40, "BET", 620, 0);
+        this.createdBetBar(graphicBetBar, 650, 0, 90, 40, "BET", 625, 0);
         this.createBetAmountField();
         this._attachHandlers();
     };
+
+    createBalanceAmountField() {
+        const balancePrice = new PIXI.Text(`${this.price}`);
+        balancePrice.x = 165;
+        balancePrice.y = -35;
+        this.addChild(balancePrice);
+        Number(this.balancePrice = balancePrice);
+    }
+    balancevalue() {
+            this.balancePrice.text -= this.betPrice.text;
+    }
+
     _attachHandlers() {
         this.maxButton.on('click', this.betIncrement);
         this.minButton.on('click', this.betDecrement);
@@ -30,7 +44,7 @@ export default class BetBar extends PIXI.Container {
 
     createBetAmountField() {
         const betPrice = new PIXI.Text(`${this.count}`);
-        betPrice.x = 620;
+        betPrice.x = 630;
         betPrice.y = -30;
         this.addChild(betPrice);
         this.betPrice = betPrice;
