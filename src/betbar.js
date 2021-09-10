@@ -1,7 +1,8 @@
 import * as PIXI from 'pixi.js'
 export default class BetBar extends PIXI.Container {
-    constructor(y) {
+    constructor(y, spin) {
         super()
+        this.spin = spin
         this.y = y
         const graphicBetBar = new PIXI.Graphics()
         this.bet = [10, 20, 30, 40, 50, 100, 200, 300, 400, 500, 1000, 10000, 20000];
@@ -20,7 +21,6 @@ export default class BetBar extends PIXI.Container {
         this.createBetAmountField();
         this._attachHandlers();
     };
-
     _attachHandlers() {
         this.maxButton.on('click', this.betIncrement);
         this.minButton.on('click', this.betDecrement);
@@ -84,6 +84,8 @@ export default class BetBar extends PIXI.Container {
     };
 
     betDecrement = () => {
+        this.spin.interactive = true
+        this.spin.alpha = 1;
         let i = --this.idx
         this.betPrice.text = this.bet[i]
         if (+this.betPrice.text <= 10) {
@@ -104,6 +106,8 @@ export default class BetBar extends PIXI.Container {
     }
 
     maxvalue = () => {
+        this.spin.interactive = false
+        this.spin.alpha = 0.5;
         this.MinButton.interactive = true;
         this.MinButton.alpha = 1;
         this.MaxButton.interactive = false;
@@ -116,6 +120,8 @@ export default class BetBar extends PIXI.Container {
     }
 
     minvalue = () => {
+        this.spin.interactive = true
+        this.spin.alpha = 1;
         this.MinButton.interactive = false;
         this.MinButton.alpha = 0.5;
         this.MaxButton.interactive = true;

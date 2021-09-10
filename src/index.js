@@ -32,10 +32,6 @@ let board = new Board();
 stage.addChild(board)
 
 
-const betbar = new BetBar(800)
-// betbar.betIncrement(610, 830)
-
-mainStage.addChild(betbar)
 
 
 addSpinMask(stage, 100, 172, 1100, 500)
@@ -69,7 +65,9 @@ drawSlotLines(stage, mainStage)
 const spin = new PIXI.Sprite.from('img/spin.png')
 const graphics1 = new PIXI.Graphics();
 StopSpinBtnCreator(renderer, mainStage, spin, graphics1)
+const betbar = new BetBar(800, spin)
 
+mainStage.addChild(betbar)
 
 function startSpin() {
     console.log("start spin")
