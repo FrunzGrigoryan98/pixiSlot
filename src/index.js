@@ -61,12 +61,10 @@ drawSlotLines(stage, mainStage)
 
 const spin = new PIXI.Sprite.from('img/spin.png')
 const graphics1 = new PIXI.Graphics();
-const betbar = new BetBar(800)
-mainStage.addChild(betbar)
+
 
 StopSpinBtnCreator(renderer, mainStage, spin, graphics1)
 const betbar = new BetBar(800, spin)
-
 mainStage.addChild(betbar)
 
  function startSpin() {
