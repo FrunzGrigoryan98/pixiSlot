@@ -1,14 +1,12 @@
 import * as PIXI from 'pixi.js'
-const ticker2 = new PIXI.Ticker()
-let a
 export default class BetBar extends PIXI.Container {
     constructor(y) {
         super()
         this.y = y
         const graphicBetBar = new PIXI.Graphics()
         this.bet = [10, 20, 30, 40, 50, 100, 200, 300, 400, 500, 1000, 10000, 20000];
-        this.count = 50;
-        console.log("sss", this.count);
+        this.count = 10;
+        this.idx = 0;
         this.addChild(graphicBetBar);
         this.createdBetBar(graphicBetBar, 200, 0, 80, 50, "BALANCE", 140, -10);
         this.createdBetBar(graphicBetBar, 1044, 0, 80, 50, "WIN", 1020, -10);
@@ -34,9 +32,8 @@ export default class BetBar extends PIXI.Container {
         const betPrice = new PIXI.Text(`${this.count}`);
         betPrice.x = 620;
         betPrice.y = -30;
-        console.log("betPrice", betPrice);
         this.addChild(betPrice);
-        Number(this.betPrice = betPrice);
+        this.betPrice = betPrice;
     };
 
     createdBetBar(graphics, x, y, b, a, text, xx, yy) {
@@ -70,7 +67,8 @@ export default class BetBar extends PIXI.Container {
     }
 
     betIncrement = () => {
-        this.betPrice.text = this.betPrice.text - 0 + 10
+        let i = ++this.idx
+        this.betPrice.text = this.bet[i]
         if (+this.betPrice.text === 20000) {
             this.MaxButton.interactive = false;
             this.MaxButton.alpha = 0.5;
@@ -86,14 +84,15 @@ export default class BetBar extends PIXI.Container {
     };
 
     betDecrement = () => {
-        if (+this.betPrice.text === 10) {
+        let i = --this.idx
+        this.betPrice.text = this.bet[i]
+        if (+this.betPrice.text <= 10) {
+            this.betPrice.text = 10
             this.MinButton.interactive = false;
             this.MinButton.alpha = 0.5;
             this.minButton.interactive = false;
             this.minButton.alpha = 0.5;
         } else {
-            console.log('decrement else')
-            this.betPrice.text -= 10;
             this.minButton.alpha = 1;
         }
         if (this.betPrice.text < 20000) {
@@ -128,5 +127,3 @@ export default class BetBar extends PIXI.Container {
         this.minButton.alpha = 0.5;
     }
 }
-
-
