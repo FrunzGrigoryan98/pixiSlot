@@ -26,7 +26,7 @@ export default class Reel extends PIXI.Container {
             this.dudesCord.push(icon1)
         })
     }
-    spining() {
+    spining =() =>  {
         this.dudesCord.forEach(dude => {
             // console.log(dude);
             let deltaY = 5;
@@ -52,8 +52,7 @@ export default class Reel extends PIXI.Container {
         //     deltaY = 1
         // }
     }
-    spin() {
-        console.log("spin")
+    spin() {      
         ticker1.add(this.spining, this)
     }
     stopSpin(delay) {
