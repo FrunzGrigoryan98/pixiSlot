@@ -31,10 +31,6 @@ mainStage.addChild(stage)
 let board = new Board();
 stage.addChild(board)
 
-
-
-
-
 addSpinMask(stage, 100, 172, 1100, 500)
 board.renderReels([[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]])
 stage.addChild(board)
@@ -69,7 +65,9 @@ const betbar = new BetBar(800)
 mainStage.addChild(betbar)
 
 StopSpinBtnCreator(renderer, mainStage, spin, graphics1)
+const betbar = new BetBar(800, spin)
 
+mainStage.addChild(betbar)
 
  function startSpin() {
         board.startSpin()
